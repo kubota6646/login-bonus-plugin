@@ -1,0 +1,21 @@
+commands:
+  receivebonus:
+    description: "その日のプレイ時間条件を満たした場合、当日のlogin報酬を受け取る"
+    usage: "/receivebonus"
+    permission: "loginbonus.receive"
+    aliases: ["rb", "bonus"]
+  forcereward:
+    description: "指定プレイヤーに指定日数分のスペシャル報酬＋同日数分のlogin報酬を即時付与"
+    usage: "/forcereward <player> <days>"
+    permission: "loginbonus.admin"
+    aliases: ["fr"]
+  setstreak:
+    description: "指定プレイヤーのストリーク（連続ログイン日数）を強制編集"
+    usage: "/setstreak <player> <days>"
+    permission: "loginbonus.admin"
+    aliases: ["ss"]
+  loginbonus:
+    description: "ログインボーナスの管理者コマンド"
+    usage: "/loginbonus <reload|forcegive|resetplaytime> <player>"
+    permission: "loginbonus.admin"
+    aliases: ["lb"]

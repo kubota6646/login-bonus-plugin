@@ -1,0 +1,13 @@
+name: LoginBonusPlugin
+main: me.kubota6646.loginbonus.LoginBonusPlugin
+version: 1.0
+api-version: 1.19
+description: Advanced login bonus plugin with streaks and rewards
+author: kubota6646
+permissions:
+  loginbonus.admin:
+    description: Allows all admin commands
+    default: false
+  loginbonus.receive:
+    description: Allows receiving bonuses
+    default: true
