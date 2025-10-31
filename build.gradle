@@ -9,7 +9,7 @@ sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
-    maven { url = 'https://repo.spigotmc.org/snapshot/' }
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
 }
 
 dependencies {
@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'me.kubota6646.loginbonus.LoginBonusPlugin'
+            'Main-Class': 'me.kubota6646.loginbonus.LoginBonusPlugin'
         )
     }
 }
