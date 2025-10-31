@@ -1,0 +1,96 @@
+# ========================================
+# LoginBonusPlugin 設定ファイル (config.yml)
+# ========================================
+# このプラグインは、Minecraftサーバーでプレイヤーのログイン時間をトラックし、ストリークに基づいて報酬を与えるものです。
+# 設定変更後、/loginbonus reload コマンドで再読み込みしてください。
+# 注意: 日本語のメッセージは装飾コード (&c など) を使用できます。
+
+# ========================================
+# ストレージ設定 (データ保存方法)
+# ========================================
+# データ保存場所を選択します。
+# "yaml": YAMLファイル (plugins/LoginBonusPlugin/playerdata.yml) に保存。シンプルでサーバー再起動不要。
+# "mysql": MySQLデータベースに保存。大量データや複数サーバー共有に適する。
+storage:
+  type: "yaml"  # "yaml" または "mysql"
+  mysql:
+    host: "localhost"  # MySQLサーバーのホスト名またはIPアドレス
+    port: 3306  # MySQLポート番号 (デフォルト: 3306)
+    database: "minecraft"  # 使用するデータベース名
+    username: "root"  # MySQLユーザー名
+    password: "password"  # MySQLパスワード
+
+# ========================================
+# ログイン報酬設定
+# ========================================
+# プレイヤーが60分以上プレイした場合に受け取る基本報酬。
+# ストリーク日数分アイテムが与えられます。
+login-rewards:
+  - material: DIAMOND  # アイテムのMaterial名 (例: DIAMOND, GOLD_INGOT)
+    amount: 1  # 1個与える量
+
+# ========================================
+# 必要プレイ時間設定
+# ========================================
+# ボーナスを受け取るために必要な1日のプレイ時間 (分)。
+# デフォルト: 60分
+required-playtime-minutes: 60
+
+# ========================================
+# 特定日数報酬設定
+# ========================================
+# ストリークが指定日数に達した時に追加報酬を与える。
+# 有効化: true/false
+special-streak-rewards-enabled: false
+# 報酬内容: キー(日数)で報酬を定義
+special-streak-rewards:
+  '7':  # 7日ストリークで報酬
+    items:
+      - type: EMERALD  # アイテムのMaterial名
+        amount: 7  # 個数
+    message: "&b7日連続ログイン！エメラルド7個プレゼント！"  # メッセージ (プレースホルダー: %days%)
+  '30':
+    items:
+      - type: NETHERITE_INGOT
+        amount: 1
+    message: "&d30日連続ログイン！ネザライトインゴット1個プレゼント！"
+
+# ========================================
+# 倍数日数報酬設定
+# ========================================
+# ストリークが指定数の倍数に達した時に追加報酬を与える。
+# 有効化: true/false
+multiples-enabled: true
+# 報酬内容: キー(倍数)で報酬を定義
+multiples:
+  '5':  # 5の倍数日 (5,10,15,...) で報酬
+    items:
+      - type: GOLD_INGOT
+        amount: 2
+    message: "&e%days%日連続ログイン！ゴールドインゴット2個プレゼント！"
+  '10':
+    items:
+      - type: GOLD_INGOT
+        amount: 4
+    message: "&e%days%日連続ログイン！ゴールドインゴット4個プレゼント！"
+
+# ========================================
+# ボスバー設定
+# ========================================
+# ログイン進捗を表示するボスバーの色とスタイル。
+bossbar-color: GREEN  # 色: WHITE, PINK, BLUE, RED, GREEN, YELLOW, PURPLE, DARK_BLUE, DARK_GREEN, DARK_AQUA, DARK_RED, DARK_PURPLE, GOLD, GRAY, DARK_GRAY, BLACK
+bossbar-style: SOLID  # スタイル: SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20
+
+# ========================================
+# メッセージ設定
+# ========================================
+# プラグインのメッセージ。装飾コード (&c: 赤, &a: 緑, &e: 黄 など) を使用可能。
+messages:
+  no-permission: "&cこのコマンドを使用する権限がありません。"
+  insufficient-playtime: "&e今日のプレイ時間が足りません (&c%required%&e 分必要です)。"  # %required%: 必要時間
+  inventory-full: "&cインベントリが満杯です。報酬種類数以上の空きスロット (&e%slots%&c 個)が必要です。&e/receivebonus &cで受け取れます。"  # %slots%: 必要スロット数
+  bonus-received: "&aログインボーナスを受け取りました！"
+  special-bonus-received: "&6%days% 日分のスペシャルボーナスを受け取りました！"  # %days%: 日数
+  bossbar-progress: "&eログインボーナス進捗: &a%current%&e/&a%required% &e分"  # %current%: 現在の時間, %required%: 必要時間
+  bossbar-claimable: "&aログインボーナス受け取り可能！"
+  bossbar-claimed: "&7ログインボーナス受け取り済み"
