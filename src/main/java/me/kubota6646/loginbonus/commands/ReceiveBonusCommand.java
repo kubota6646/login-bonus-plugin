@@ -10,6 +10,7 @@ import me.kubota6646.loginbonus.managers.StreakManager;
 import me.kubota6646.loginbonus.managers.RewardManager;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class ReceiveBonusCommand implements CommandExecutor {
     private final LoginBonusPlugin plugin;

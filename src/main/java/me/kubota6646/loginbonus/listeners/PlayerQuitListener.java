@@ -5,6 +5,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.entity.Player;
 import me.kubota6646.loginbonus.managers.PlaytimeManager;
+import java.util.UUID;
 
 public class PlayerQuitListener implements Listener {
     private final PlaytimeManager playtimeManager;

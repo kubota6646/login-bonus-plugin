@@ -11,6 +11,13 @@ import me.kubota6646.loginbonus.managers.PlaytimeManager;
 import me.kubota6646.loginbonus.managers.RewardManager;
 import me.kubota6646.loginbonus.commands.*;
 
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.PluginCommand;
+import org.bukkit.command.CommandMap;
+import org.bukkit.plugin.Plugin;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.io.File;
